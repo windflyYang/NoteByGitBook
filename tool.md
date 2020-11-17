@@ -21,3 +21,11 @@ npm install react --save-dev|yarn add react --dev
 npm update --save|yarn upgrade
 
 [简书地址](https://www.jianshu.com/p/254794d5e741 "yarn npm的区别")
+
+git 从远程拉取并创建一个本地分支
+git fetch origin master:temp
+Git merge temp
+git branch -d temp
+[git本地同步远程分支代码](https://blog.csdn.net/loongshawn/article/details/78864039)
+
+[css图片加载失败后的优化处理](https://www.zhangxinxu.com/wordpress/2020/10/css-style-image-load-fail/)
