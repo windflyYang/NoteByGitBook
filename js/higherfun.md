@@ -1,0 +1,9 @@
+**map**
+```
+map.set()
+map.get()
+map.size()
+map.has()
+map.delete()
+map.clear()
+```
