@@ -61,3 +61,15 @@ console.count()
 console.trace()
 打印耗时
 time() 和 timeEnd()
+
+JWT认证机制 JSON Web Token
+当前端有跨域的情况下 推荐用JWT认证机制 否则推荐Session机制
+Session认证的局限性 :
+Session认证必须配合cookie才能实现,由于cookie默认不支持跨域 所以当前端跨域请求后端接口的时候 需要做额外配置 
+JWT的工作原理:
+客户端登录 通过登录后拿到用户的账号信息 然后通过加密生成token字符串 客户端将token存储起来 当发送ajax请求的时候 通过请求头的Authorization字段 发送给服务器 服务器拿到token再还原成用户信息 返回给浏览器
+用户信息通过Token字符串的形式,保存在客户浏览器中, 服务器通过还原Token字符串的形式来认证用户的身份.
+
+JWT组成
+通常由三部分组成 Header（头部） PayLoad（有效荷载）Signature（签名）三者之间使用 . 分割 Header.PayLoad.Signature
+Payload 才是真正的用户信息 Header 跟 Signature只是安全相关的部分 为了包装Token的安全性
