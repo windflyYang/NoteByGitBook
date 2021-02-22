@@ -85,6 +85,7 @@ console.log(add(1)); // 6
 JS 为函数提供了两个不同的内部方法： [[Call]] 与 [[Construct]] 。当函数未使用 new 进行调用时， [[call]] 方法会被执行，运行的是代码中显示的函数体。而当函数使用 new 进行调用时， [[Construct]] 方法则会被执行，负责创建一个被称为新目标的新的对象，并且使用该新目标作为 this 去执行函数体。拥有 [[Construct]] 方法的函数被称为构造器。
 并不是所有函数都拥有 [[Construct]] 方法，因此不是所有函数都可以用 new 来 调用 箭头函数就未拥有new方法
 
+instanceof运算符用来判断一个构造函数的prototype属性所指向的对象是否存在另外一个要检测对象的原型链上
 ```
 function Person(name) { 
    if (this instanceof Person) { 

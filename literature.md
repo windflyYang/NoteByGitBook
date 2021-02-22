@@ -11,3 +11,6 @@
 [孙航博客](https://sunhang.top/)
 [现代 JavaScript 教程](https://zh.javascript.info/)
 [慕课装饰器](https://www.imooc.com/learn/1012)
+[如何成为独当一面的工程师](https://juejin.cn/post/6844904001092206605)
+[前端书单](https://juejin.cn/post/6930419481835470861)
+[面试必看 必备](https://lucifer.ren/fe-interview/#/?id=%e6%af%8f%e6%97%a5%e4%b8%80%e9%a2%98)
