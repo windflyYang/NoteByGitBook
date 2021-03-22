@@ -280,3 +280,12 @@ console.log(person["last name"]); // "Zakas"
 };
 ```
 在这种上下文中 super 是不可用的
+
+??空值合并操作符:
+只有当左侧为 null和undefined时 才会返回右侧的数
+const nullValue = null;
+const emptyText = ""; // 空字符串，是一个假值，Boolean("") === false
+const someNumber = 42;
+const valA = nullValue ?? "valA 的默认值"; //valA 的默认值"
+const valB = emptyText ?? "valB 的默认值"; // ''
+const valC = someNumber ?? 0; //42

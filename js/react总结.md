@@ -101,3 +101,39 @@ jsx的转化过程 由babel/preset-react插件编译成createElement()方法
 注意: 不用做渲染的数据不要放到state中 比如定时器id  对于需要在多个方法中用到的数据 应该放到this中 用法:直接this.xxx
 2.避免不必要的重新渲染
 解决方法: 使用钩子函数 shouldComponentUpdate(nextProps,nextState )
+shouldComponentUpdate(){
+  <!--this.props 跟新前的props nextProps  最新的props  --> 如果是组件状态判断是否需要更新 用nextProps跟this.props比较
+  <!--通过this.state 获取更新前的状态 nextState  最新的state --> 如果是自身状态判断是否需要更新 用nextSrate跟this.state比较
+  return false;//如果直接返回false 则组件不会再被更新
+}
+3.纯组件: 用法 把class XXX extends React.Component 替换成class XXX extends React.PureComponent 
+原因: PureComponent内部实现了shouldComponentUpdate钩子 不需要手动比较  实现原理:比较前后两次props state是否相同
+纯组件的实现方式: 
+纯组件内部的对比是shallow compare(浅层对比)
+对于值类型的比较 直接赋值即可
+let number = 0;
+let newNumber = number;
+newNumber = 2;
+console.log(newNumber === number)//false
+如果是引用类型的数据 应该重新创建新数据  不要修改原数据
+对象类型的可以 const newObj = {...obj,key:newValue} 创建出来一个新的对象
+如果是数组 则不要用push或者unshift等直接修改数组的方法 用concat或slice等这些返回新数组的方法
+不止在纯函数中 只要是引用类型的数据最好都创建一份新的数据
+
+虚拟DOM diff算法
+react更新视图的思想是 只要state变化就重新渲染视图 但是这样如果只有部分dom更新性能就不好了 通过虚拟DOM和diff算法可以实现组件部分更新
+diff算法的实现:
+1.初次渲染时,React会根据初始state(Model) 创建一个虚拟dom对象
+2.根据虚拟dom生成真正的浏览器里的dom对象
+3.当数据发生变化 重新根据新的数据 创建新的虚拟dom对象
+4.与上一次得到的虚拟dom对象 使用diff算法对比 得到需要更新的内容
+5.最终 react只将变化的内容更新(patch)到dom中 重新渲染页面
+![虚拟dom diff工作流程图](/public/img/domdiff.png)
+
+diff算法是在render调用之后 
+
+key的作用是给dom标签编号 
+用index作为key 可能造成的问题
+1.若对数据进行逆序添加 逆序删除等破坏顺序操作 会造成没必要的真是dom更新 影响效率
+2.如果结构中还包含输入类的dom 会产生错误dom更新 界面上的输入值错乱
+如果不存在上述情况 仅用于渲染列表展示 没有问题
